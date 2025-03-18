@@ -113,10 +113,8 @@ const Dashboard: React.FC = () => {
         {scheduleLoading ? (
           <Skeleton className="h-64 w-full rounded-lg" />
         ) : (
-          <Card className="bg-white shadow-md rounded-lg p-6">
-            <h2 className="text-xl font-semibold text-gray-700 mb-4">
-              Upcoming Schedules
-            </h2>
+          <Card className=" shadow-md rounded-lg p-6">
+            <h2 className="text-xl font-semibold  mb-4">Upcoming Schedules</h2>
             {schedules.length > 0 ? (
               <table className="min-w-full text-sm">
                 <thead>
@@ -148,10 +146,8 @@ const Dashboard: React.FC = () => {
         {cancelledLoading ? (
           <Skeleton className="h-64 w-full rounded-lg" />
         ) : (
-          <Card className="bg-white shadow-md rounded-lg p-6">
-            <h2 className="text-xl font-semibold text-gray-700 mb-4">
-              Cancelled Schedules
-            </h2>
+          <Card className=" shadow-md rounded-lg p-6">
+            <h2 className="text-xl font-semibold  mb-4">Cancelled Schedules</h2>
             {cancelledSchedules.length > 0 ? (
               <table className="min-w-full text-sm">
                 <thead>

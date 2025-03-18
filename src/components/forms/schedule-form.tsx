@@ -239,7 +239,7 @@ const CreateScheduleForm: React.FC<ScheduleFormProps> = ({ setIsOpen }) => {
             <SelectContent>
               {dentistState.dentists.map((dentist: Dentist) => (
                 <SelectItem key={dentist.id} value={dentist.id.toString()}>
-                  dr.{dentist.firstName}
+                  Dr.{dentist.firstName}
                 </SelectItem>
               ))}
             </SelectContent>

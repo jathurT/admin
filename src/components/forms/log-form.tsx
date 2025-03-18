@@ -7,7 +7,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useLog } from "@/hooks/useLog";
 import { CreateLog } from "@/types/patient-log";
-
+import { useDentist } from "@/hooks/useDentist";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Dentist } from "@/types/dentist";
 // Zod schema for form validation
 const logSchema = z.object({
   actionType: z.string().min(1, "Action Type is required"),
@@ -25,10 +33,11 @@ interface LogFormProps {
 const LogForm: React.FC<LogFormProps> = ({ setIsOpen, patientID }) => {
   const { toast } = useToast();
   const { createLog } = useLog();
-
+  const { dentistState } = useDentist();
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors, isSubmitting },
     reset,
   } = useForm<LogFormInputs>({
@@ -94,14 +103,24 @@ const LogForm: React.FC<LogFormProps> = ({ setIsOpen, patientID }) => {
         {/* Dentist ID field */}
         <div>
           <label htmlFor="dentistId" className="block font-medium">
-            Dentist ID
+            Dentist
           </label>
-          <Input
-            id="dentistId"
-            placeholder="Enter dentist ID"
-            {...register("dentistId")}
-            className="w-full border p-2 rounded"
-          />
+          <Select
+            onValueChange={(value) => {
+              setValue("dentistId", value as any); // Directly update the dentistId form field
+            }}
+          >
+            <SelectTrigger className={`w-full `}>
+              <SelectValue placeholder="Select Doctor" />
+            </SelectTrigger>
+            <SelectContent>
+              {dentistState.dentists.map((dentist: Dentist) => (
+                <SelectItem key={dentist.id} value={dentist.id.toString()}>
+                  Dr.{dentist.firstName}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
           {errors.dentistId && (
             <p className="text-red-500 text-sm">{errors.dentistId.message}</p>
           )}
