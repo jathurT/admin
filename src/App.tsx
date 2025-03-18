@@ -24,6 +24,8 @@ import FeedbackPage from "@/pages/Feedback/FeedbackPage";
 import ContactUsPage from "@/pages/ContactUs/ContactUsPage";
 import PatientLogPage from "./pages/PatientLog/PatientLogBookPage";
 import PatientLogDetails from "./pages/PatientLog/PatientLogPage";
+
+//test git
 function ProtectedRoute({ children }: { children: JSX.Element }) {
   const { authState, isLording } = useAuth();
 

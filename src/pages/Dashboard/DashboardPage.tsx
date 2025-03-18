@@ -3,7 +3,6 @@ import axios from "axios";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Card } from "@/components/ui/card";
 import Chart from "./chart";
-
 // Define types for schedules
 interface UpcomingSchedule {
   date: string;
