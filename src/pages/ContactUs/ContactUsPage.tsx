@@ -30,18 +30,6 @@ const FeedbackPage: React.FC = () => {
 
   return (
     <>
-      {/* <ResponsiveDialog
-        isOpen={isDialogOpen}
-        setIsOpen={setIsDialogOpen}
-        title="Feedback Details"
-        className="sm:max-w-screen-md"
-      >
-        <ContactUsReplyForm
-          setIsOpen={setIsDialogOpen}
-          selectedContactUsID={selectedContactUsID}
-        />
-      </ResponsiveDialog> */}
-
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 p-4">
         {contactUs.map((contact) => (
           <ContactUsCard key={contact.id} {...contact} />
