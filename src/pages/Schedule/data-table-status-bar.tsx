@@ -14,7 +14,13 @@ import { useToast } from "@/hooks/use-toast";
 
 import { CreateSchedule } from "@/types/schedule";
 type StatusBarProps = {
-  status: "AVAILABLE" | "UNAVAILABLE" | "CANCELLED" | "FULL" | "FINISHED";
+  status:
+    | "AVAILABLE"
+    | "UNAVAILABLE"
+    | "CANCELLED"
+    | "FULL"
+    | "FINISHED"
+    | "ACTIVE";
   cardId: string;
 };
 
@@ -30,6 +36,7 @@ const StatusBar: React.FC<StatusBarProps> = ({ status, cardId }) => {
     CANCELLED: "text-gray-900 bg-gray-300 border-gray-500",
     UNAVAILABLE: "text-red-900 bg-red-200 border-red-500",
     FINISHED: "text-green-900 bg-green-200 border-green-500",
+    ACTIVE: "text-blue-900 bg-blue-200 border-blue-500",
   };
 
   const handleStatusChange = async (newStatus: string) => {

@@ -1,43 +1,55 @@
 import React from "react";
 import { Card } from "@/components/ui/card";
 import { Feedback } from "@/types/feedback";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import StarRating from "./star-rating";
 import ToggleSwitch from "./feedback-toggle-input";
 
-const FeedbackCard: React.FC<Feedback> = ({
+interface FeedbackCardProps extends Feedback {
+  onClick?: (id: string) => void;
+}
+
+const FeedbackCard: React.FC<FeedbackCardProps> = ({
   id,
   name,
   rating,
   email,
   comments,
   showOnWebsite,
+  onClick,
 }) => {
-  return (
-    <Card className=" w-full p-4 border rounded-lg shadow-md ">
-      <h3 className="text-lg font-semibold">{name}</h3>
-      <p className="text-sm ">Rating: {rating}</p>
-      <p className="text-sm ">Email: {email}</p>
-      {/* <p className="text-sm ">Date: {date}</p> */}
-      <div className="flex items-center gap-2 mt-2">
-        <label className="text-sm  w-48">Show in Page:</label>
+  const handleClick = () => {
+    if (onClick) {
+      onClick(id);
+    }
+  };
 
-        <ToggleSwitch feedbackID={id} checked={showOnWebsite} />
-        {/* <select className="border rounded-md px-2 py-1 text-sm">
-          <option value="show">Show</option>
-          <option value="don't">Don't</option>
-        </select> */}
+  // Get only the first part of the email for display
+  const displayEmail = email ? email.split("@")[0] + "@..." : "";
+
+  return (
+    <Card className="w-full p-4 border rounded-lg shadow-md  hover:shadow-lg transition-shadow ">
+      <div className="flex justify-between items-start mb-2">
+        <h3 className="text-lg font-semibold truncate">{name}</h3>
+        <div className="flex items-center">
+          <StarRating rating={rating} />
+          <span className="ml-1 text-xs text-gray-500">({rating})</span>
+        </div>
       </div>
-      <div className="mt-4">
-        <p className="text-sm font-medium">Comment:</p>
-        <p className="text-sm  dark:text-gray-400 mt-1 line-clamp-3">
+
+      <p className="text-xs text-gray-500 mb-3 truncate">{displayEmail}</p>
+
+      <div
+        onClick={handleClick}
+        className="bg-gray-50 dark:bg-muted p-3 rounded-md mb-3 cursor-pointer"
+      >
+        <p className="text-sm line-clamp-3 text-gray-700 dark:text-gray-300">
           {comments}
         </p>
+      </div>
+
+      <div className="flex items-center justify-between mt-2 pt-2 border-t border-gray-100 dark:border-muted-foreground">
+        <span className="text-xs text-gray-500">Show on website:</span>
+        <ToggleSwitch feedbackID={id} checked={showOnWebsite} />
       </div>
     </Card>
   );

@@ -19,14 +19,14 @@ export default function BookingPage() {
       <div className="pb-5 px-2 lg:px-0">
         <Tabs defaultValue="apoinments">
           <TabsList className=" ">
-            <TabsTrigger value="schedules">Schedules </TabsTrigger>
             <TabsTrigger value="apoinments">All Apoinments</TabsTrigger>
+            <TabsTrigger value="schedules">Not ready </TabsTrigger>
           </TabsList>
-          <TabsContent value="schedules">
-            <div>hi</div>
-          </TabsContent>
           <TabsContent value="apoinments">
             <DataTable columns={columns} data={state.bookings} />
+          </TabsContent>
+          <TabsContent value="schedules">
+            <div>hi</div>
           </TabsContent>
         </Tabs>
       </div>
