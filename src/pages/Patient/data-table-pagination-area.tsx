@@ -13,10 +13,7 @@ interface TableProps<TData> {
 }
 
 export default function PaginationArea<TData>({ table }: TableProps<TData>) {
-  const { theme } = useTheme();
   const [isClient, setIsClient] = useState(false);
-
-  const bgColor = theme === "dark" ? "bg-muted" : "bg-white";
 
   useEffect(() => {
     setIsClient(true);
@@ -32,8 +29,8 @@ export default function PaginationArea<TData>({ table }: TableProps<TData>) {
   return (
     <div
       className={`relative w-full h-[80px] max-sm:h-[206px] max-sm:pt-4 max-sm:pb-4 
-    overflow-hidden flex justify-between items-center px-6 ${bgColor} 
-    border-t max-sm:flex-col max-sm:gap-2`}
+    overflow-hidden flex justify-between items-center px-6 bg-white dark:bg-muted 
+    border max-sm:flex-col max-sm:gap-2 rounded-b-xl`}
     >
       <PaginationSelection table={table} />
       <div className="flex gap-6 items-center max-sm:flex-col max-sm:mt-4 max-sm:gap-2 ">

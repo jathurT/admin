@@ -39,7 +39,7 @@ const FeedbackPage: React.FC = () => {
     return <p>No feedback available.</p>;
 
   return (
-    <>
+    <div className="px-5 lg:px-0">
       <ResponsiveDialog
         isOpen={isDialogOpen}
         setIsOpen={setIsDialogOpen}
@@ -66,7 +66,7 @@ const FeedbackPage: React.FC = () => {
           />
         ))}
       </div>
-    </>
+    </div>
   );
 };
 

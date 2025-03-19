@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Plus } from "lucide-react";
+import { Plus, Download } from "lucide-react";
 import { Table } from "@tanstack/react-table";
 import { exportToExcel } from "@/lib/export-to-excel";
 import { useState } from "react";
@@ -44,7 +44,7 @@ export function DataTableHeader<TData>({
           onClick={handleExport}
         >
           <span className="hidden md:block"> Export CSV</span>
-          <Plus className="md:hidden" />
+          <Download className="md:hidden" />
         </Button>
         <Button className="btn btn-primary p-o" onClick={() => setIsOpen(true)}>
           <span className="hidden md:block"> Add Patient</span>

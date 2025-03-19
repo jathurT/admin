@@ -41,7 +41,7 @@ const DocterDeleteForm: React.FC<DocterDeleteFormProps> = ({
   };
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-4 ">
       <div className="grid grid-flow-col gap-5 px-4">
         <Button
           variant="outline"

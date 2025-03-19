@@ -30,7 +30,7 @@ export const columns: ColumnDef<Schedule>[] = [
       <DataTableColumnHeader column={column} title="Booking count" />
     ),
     cell: ({ row }) => (
-      <div className="w-[30px] text-center capitalize">
+      <div className="w-[30px] text-center ">
         {row.getValue("numberOfBookings")}
       </div>
     ),

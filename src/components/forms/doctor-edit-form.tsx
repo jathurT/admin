@@ -100,7 +100,7 @@ const DoctorEditForm: React.FC<EditDoctorFormProps> = ({
   };
 
   return (
-    <div className="w-full rounded">
+    <div className="w-full rounded px-5 md:px-0">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div className="grid grid-cols-2 gap-5">
           <div>

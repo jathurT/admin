@@ -78,7 +78,7 @@ const PatientForm: React.FC<PatientFormProps> = ({ setIsOpen }) => {
   };
 
   return (
-    <div className="w-full rounded">
+    <div className="w-full rounded px-5 md:px-0">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         {/* Patient name field */}
         <div>

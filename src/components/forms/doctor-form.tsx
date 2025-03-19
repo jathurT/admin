@@ -85,7 +85,7 @@ const DoctorForm: React.FC<DocterFormProps> = ({ setIsOpen }) => {
   };
 
   return (
-    <div className="w-full   rounded ">
+    <div className="w-full   rounded px-3 md:px-0">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         {/* Add this div to wrap the input fields */}
         <div className="grid grid-cols-2 gap-5">
