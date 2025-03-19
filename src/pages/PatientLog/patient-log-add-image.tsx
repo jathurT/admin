@@ -3,6 +3,7 @@ import axios from "axios";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import axiosInstance from "@/api/axiosInstance";
 
 interface AddImageComponentProps {
   patientID: string;
@@ -40,18 +41,18 @@ const AddImageComponent: React.FC<AddImageComponentProps> = ({
       // Step 1: Get Pre-signed URL from the backend
 
       console.log(selectedFile.name, selectedFile.type);
-      const presignedUrlResponse = await axios.post<{
+      const presignedUrlResponse = await axiosInstance.post<{
         url: string;
         key: string;
       }>(
-        `http://localhost:8080/api/s3/generate-presigned-url`,
+        `/s3/generate-presigned-url`,
         {
           fileName: selectedFile.name,
           fileType: selectedFile.type,
-        },
-        {
-          withCredentials: true, // Ensures cookies and credentials are sent
         }
+        // {
+        //   withCredentials: true, // Ensures cookies and credentials are sent
+        // }
       );
 
       const { url, key } = presignedUrlResponse.data;
@@ -67,14 +68,14 @@ const AddImageComponent: React.FC<AddImageComponentProps> = ({
 
       // Step 3: Store the S3 key in the backend
       console.log();
-      await axios.post(
-        `http://localhost:8080/api/patients/${patientID}/logs/${logID}/photos`,
+      await axiosInstance.post(
+        `/patients/${patientID}/logs/${logID}/photos`,
         {
           s3Keys: [key],
-        },
-        {
-          withCredentials: true, // Ensures cookies and credentials are sent
         }
+        // {
+        //   withCredentials: true, // Ensures cookies and credentials are sent
+        // }
       );
       console.log("done");
 
