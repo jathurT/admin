@@ -96,7 +96,7 @@ const AddImageComponent: React.FC<AddImageComponentProps> = ({
   };
 
   return (
-    <div className="    rounded-lg">
+    <div className="  px-5 md:px-0  rounded-lg">
       <h2 className="text-lg font-semibold">Upload Image</h2>
       <Input
         type="file"

@@ -270,7 +270,7 @@ const ScheduleEditForm: React.FC<EditScheduleFormProps> = ({
               setValue("dentistId", value as any); // Directly update the dentistId form field
             }}
           >
-            <SelectTrigger className={`w-[240px] `}>
+            <SelectTrigger className={`w-full `}>
               <SelectValue placeholder="Select Doctor" />
             </SelectTrigger>
             <SelectContent>

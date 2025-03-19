@@ -66,7 +66,7 @@ const LogForm: React.FC<LogFormProps> = ({ setIsOpen, patientID }) => {
   };
 
   return (
-    <div className="w-full rounded">
+    <div className="w-full rounded px-5 md:px-0">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         {/* Action Type field */}
         <div>
