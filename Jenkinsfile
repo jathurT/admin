@@ -7,7 +7,7 @@ pipeline {
     
     environment {
         EC2_USER = 'ubuntu'
-        EC2_HOST = credentials('ec2-host-hotel')
+        EC2_HOST = credentials('ec2-host')
         APP_NAME = 'admin-frontend'
         DEPLOY_PATH = '/var/www/html/admin'
     }
@@ -55,7 +55,7 @@ pipeline {
                             error "index.html is missing from build directory. Deployment aborted."
                         }
                         
-                        sshagent(['ec2-ssh-key-hotel']) {
+                        sshagent(['ec2-ssh-key']) {
                             // Create a tar file of the build
                             echo "Creating tar archive from: ${buildDir}"
                             sh "tar -czf admin-build.tar.gz -C ${buildDir} ."
