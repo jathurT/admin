@@ -21,11 +21,7 @@ pipeline {
         
         stage('Build') {
             steps {
-                // You might need to set the base path for production build
-                // For example, with Vue.js you'd set PUBLIC_PATH=/admin/
-                // With React, you'd set PUBLIC_URL=/admin
-                
-                // Example for React
+                // For React
                 withEnv(['PUBLIC_URL=/admin']) {
                     sh 'npm install'
                     sh 'npm run build'
@@ -68,12 +64,13 @@ pipeline {
                             sh "scp -o StrictHostKeyChecking=no admin-build.tar.gz ${EC2_USER}@${EC2_HOST}:/tmp/"
                             
                             // Extract and deploy on EC2
-                            echo "Extracting and deploying on EC2"
+                            echo "Extracting and deploying on EC2 - improved method"
                             sh """
                                 ssh -o StrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} '
-                                    sudo rm -rf ${DEPLOY_PATH}/*
+                                    sudo rm -rf ${DEPLOY_PATH}
                                     sudo mkdir -p ${DEPLOY_PATH}
                                     sudo tar -xzf /tmp/admin-build.tar.gz -C ${DEPLOY_PATH}/
+                                    sudo chmod -R 755 ${DEPLOY_PATH}
                                     rm /tmp/admin-build.tar.gz
                                     sudo systemctl reload nginx
                                 '
