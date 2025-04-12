@@ -65,7 +65,7 @@ pipeline {
                                 
                                 echo "Backing up existing admin site if it exists..."
                                 if [ -d "${DEPLOY_PATH}" ]; then
-                                    sudo mv ${DEPLOY_PATH} ${DEPLOY_PATH}_backup_$(date +%Y%m%d%H%M%S) || true
+                                    sudo mv ${DEPLOY_PATH} ${DEPLOY_PATH}_backup_\$(date +%Y%m%d%H%M%S) || true
                                 fi
                                 
                                 echo "Creating deploy directory..."
